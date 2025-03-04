@@ -1,0 +1,94 @@
+local ProBacon = {}
+
+function ProBacon.UpdateLog(log)
+    local ProBaconHubUpdateLog = Instance.new("ScreenGui")
+    local BASE = Instance.new("Frame")
+    local BASE_UIC = Instance.new("UICorner")
+    local TITLE = Instance.new("TextLabel")
+    local EXIT = Instance.new("ImageButton")
+    local LOG = Instance.new("ScrollingFrame")
+    local LOG_UIC = Instance.new("UICorner")
+    local CONTENT = Instance.new("TextLabel")
+
+    ProBaconHubUpdateLog.Name = "ProBaconHubUpdateLog"
+    ProBaconHubUpdateLog.Parent = game.CoreGui or game.Players.LocalPlayer:WaitForChild("PlayerGui")
+    ProBaconHubUpdateLog.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+    BASE.Name = "BASE"
+    BASE.Parent = ProBaconHubUpdateLog
+    BASE.AnchorPoint = Vector2.new(0.5, 0.5)
+    BASE.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+    BASE.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    BASE.BorderSizePixel = 0
+    BASE.Position = UDim2.new(0.5, 0, 0.5, 0)
+    BASE.Size = UDim2.new(0, 200, 0, 300)
+
+    BASE_UIC.CornerRadius = UDim.new(0, 10)
+    BASE_UIC.Name = "BASE_UIC"
+    BASE_UIC.Parent = BASE
+
+    TITLE.Name = "TITLE"
+    TITLE.Parent = BASE
+    TITLE.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    TITLE.BackgroundTransparency = 1.000
+    TITLE.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    TITLE.BorderSizePixel = 0
+    TITLE.Position = UDim2.new(0, 10, 0, 5)
+    TITLE.Size = UDim2.new(0, 160, 0, 25)
+    TITLE.Font = Enum.Font.SourceSans
+    TITLE.Text = "Update Log"
+    TITLE.TextColor3 = Color3.fromRGB(255, 255, 255)
+    TITLE.TextSize = 14.000
+    TITLE.TextXAlignment = Enum.TextXAlignment.Left
+
+    EXIT.Parent = BASE
+    EXIT.AnchorPoint = Vector2.new(1, 0)
+    EXIT.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    EXIT.BackgroundTransparency = 1.000
+    EXIT.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    EXIT.BorderSizePixel = 0
+    EXIT.Position = UDim2.new(1, -10, 0, 10)
+    EXIT.Size = UDim2.new(0, 16, 0, 16)
+    EXIT.Image = "rbxassetid://3926305904"
+    EXIT.ImageRectOffset = Vector2.new(284, 4)
+    EXIT.ImageRectSize = Vector2.new(24, 24)
+
+    LOG.Name = "LOG"
+    LOG.Parent = BASE
+    LOG.Active = true
+    LOG.AnchorPoint = Vector2.new(0.5, 0)
+    LOG.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+    LOG.BackgroundTransparency = 0.700
+    LOG.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    LOG.BorderSizePixel = 0
+    LOG.Position = UDim2.new(0.5, 0, 0, 30)
+    LOG.Size = UDim2.new(0, 180, 0, 260)
+    LOG.ScrollBarThickness = 0
+
+    LOG_UIC.Name = "LOG_UIC"
+    LOG_UIC.Parent = LOG
+
+    CONTENT.Name = "CONTENT"
+    CONTENT.Parent = LOG
+    CONTENT.AnchorPoint = Vector2.new(0.5, 0)
+    CONTENT.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    CONTENT.BackgroundTransparency = 1.000
+    CONTENT.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    CONTENT.BorderSizePixel = 0
+    CONTENT.Position = UDim2.new(0.5, 0, 0, 5)
+    CONTENT.Size = UDim2.new(0, 170, 0, game:GetService("TextService"):GetTextSize(tostring(log), 14, "SourceSans", Vector2.new(170,math.huge)).Y+10)
+    CONTENT.Font = Enum.Font.SourceSans
+    CONTENT.Text = log
+    CONTENT.TextColor3 = Color3.fromRGB(255, 255, 255)
+    CONTENT.TextSize = 14.000
+    CONTENT.TextWrapped = true
+    CONTENT.TextXAlignment = Enum.TextXAlignment.Left
+    CONTENT.TextYAlignment = Enum.TextYAlignment.Top
+
+    LOG.CanvasSize = CONTENT.Size
+
+    EXIT.MouseButton1Click:Connect(function()
+        ProBaconHubUpdateLog:Destroy()
+    end)
+end
+return ProBacon
