@@ -79,6 +79,7 @@ function ProBacon.UpdateLog(log)
     CONTENT.Size = UDim2.new(0, 170, 0, game:GetService("TextService"):GetTextSize(tostring(log), 14, "SourceSans", Vector2.new(170,math.huge)).Y+10)
     CONTENT.Font = Enum.Font.SourceSans
     CONTENT.Text = log
+    CONTENT.RichText = true
     CONTENT.TextColor3 = Color3.fromRGB(255, 255, 255)
     CONTENT.TextSize = 14.000
     CONTENT.TextWrapped = true
