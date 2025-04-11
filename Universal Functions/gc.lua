@@ -1,6 +1,6 @@
 return function(input)
     local output = {}
-    for _, v in pairs(true) do
+    for _, v in pairs(getgc(true)) do
         if type(v) == "table" then
             for _,find in pairs(input) do
                 if rawget(v, find) then
