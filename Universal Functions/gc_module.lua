@@ -1,5 +1,7 @@
 return function(input, andlist, orlist)
     input = input or false
+    andlist = andlist or {}
+    orlist = orlist or {}
     local output = {}
     for _,v in pairs(getgc(input)) do
         if input and type(v) == "table" then
@@ -10,10 +12,14 @@ return function(input, andlist, orlist)
                 end
             end
             if isLegit then
-                for _,orItem in pairs(orlist) do
-                    if rawget(v, orItem) ~= nil then
-                        table.insert(output, v)
-                        break
+                if #orlist == 0 then
+                    table.insert(output, v)
+                else
+                    for _,orItem in pairs(orlist) do
+                        if rawget(v, orItem) ~= nil then
+                            table.insert(output, v)
+                            break
+                        end
                     end
                 end
             end
