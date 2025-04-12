@@ -7,5 +7,6 @@ return function(input)
         elseif not input then
             table.insert(output, v)
         end
+    end
     return output
 end
